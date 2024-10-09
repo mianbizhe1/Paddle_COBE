@@ -1,29 +1,26 @@
 import torch
-import paddle
+import torch.onnx
+from SwinDir.models.network_swinir import SwinIR as net
 
-# 步骤 1：加载 PyTorch 模型
-torch_model_path = '002_lightweightSR_DIV2K_s64w8_SwinIR-S_x4.pth'  # 确保路径正确
-torch_model = torch.load(torch_model_path, weights_only=True)  # 使用 weights_only=True
 
-# 打印模型内容以确认
-print(torch_model)  # 确认加载的模型是否有参数
+upscale = 4
+window_size = 8
+height = (1024 // upscale // window_size + 1) * window_size
+width = (720 // upscale // window_size + 1) * window_size
 
-# 步骤 2：创建一个字典来存储 Paddle 参数
-paddle_model = {}
+# 创建一个随机输入张量
+dummy_input = torch.randn((1, 3, height, width))
 
-# 步骤 3：从 PyTorch 模型转换并复制参数到 Paddle 模型
-for k, v in torch_model.items():
-    print(f"Key: {k}, Value: {v}")  # 打印键和值
-    if isinstance(v, torch.Tensor):
-        # 将 PyTorch 张量转换为 NumPy 然后转换为 Paddle 张量
-        paddle_model[k] = paddle.to_tensor(v.cpu().numpy())
-    else:
-        # 保留非张量项
-        paddle_model[k] = v  # 直接保存非张量项
 
-# 步骤 4：保存转换后的模型
-if paddle_model:
-    paddle.save(paddle_model, '002_lightweightSR_DIV2K_s64w8_SwinIR-S_x4.pdparams')
-    print("模型成功转换并保存！")
-else:
-    print("没有参数被保存，因为 paddle_model 为空。")
+model = net(upscale=4, in_chans=3, img_size=64, window_size=8,
+            img_range=1., depths=[6, 6, 6, 6], embed_dim=60, num_heads=[6, 6, 6, 6],
+            mlp_ratio=2, upsampler='pixelshuffledirect', resi_connection='1conv')
+
+param_key_g = 'params'
+
+pretrained_model = torch.load("002_lightweightSR_DIV2K_s64w8_SwinIR-S_x4.pth")
+model.load_state_dict(pretrained_model[param_key_g] if param_key_g in pretrained_model.keys() else pretrained_model,
+                      strict=True)
+
+# 创建一个虚拟输入来模拟模型推理时的输入
+torch.onnx.export(model, dummy_input, "nasnet.onnx", verbose=True)

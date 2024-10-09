@@ -1,0 +1,359 @@
+/* CSS for toggle buttons */
+#toggleButtons {
+    position: absolute;
+    top: 30%;
+    left: -50%;
+    transform: translateX(-50%);
+    margin-top: -40px; /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.toggleButton {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 40px;
+    display: inline-block;
+    cursor: pointer;
+    background-color: #ccc; /* Default button color */
+}
+
+.toggleButton.active {
+    background-color: #4063bc; /* Active button color */
+}
+
+/* hover时有色块展开效果 */
+#button_0::before {
+    content: "";
+    position: absolute;
+    top: 68px;
+    left: 60%;
+    width: 0;
+    height: 10px;
+    background-color: #4063bc;
+    transition: width 0.3s ease;
+}
+
+#button_0:hover::before {
+    width: 120%;
+    left: 60%;
+}
+
+#button_0::after {
+    content: "第一步";
+    position: absolute;
+    top: 28px;
+    left: 70%;
+    width: 100%;
+    height: 2px;
+    font-size: 30px;
+    color: white;
+}
+
+#button_1::before {
+    content: "";
+    position: absolute;
+    top: 168px;
+    left: 60%;
+    width: 0;
+    height: 10px;
+    background-color: #4063bc;
+    transition: width 0.3s ease;
+}
+
+#button_1:hover::before {
+    width: 120%;
+    left: 60%;
+}
+
+#button_1::after {
+    content: "第二步";
+    position: absolute;
+    top: 128px;
+    left: 70%;
+    width: 100%;
+    height: 2px;
+    font-size: 30px;
+    color: white;
+}
+
+#button_2::before {
+    content: "";
+    position: absolute;
+    top: 268px;
+    left: 60%;
+    width: 0;
+    height: 10px;
+    background-color: #4063bc;
+    transition: width 0.3s ease;
+}
+
+#button_2:hover::before {
+    width: 120%;
+    left: 60%;
+}
+
+#button_2::after {
+    content: "第三步";
+    position: absolute;
+    top: 228px;
+    left: 70%;
+    width: 100%;
+    height: 2px;
+    font-size: 30px;
+    color: white;
+}
+
+/* CSS for pages */
+/* CSS for pages */
+.page {
+    text-align: center;
+    display: none;
+    opacity: 0; /* Initially hide the pages */
+    transition: opacity 0.3s ease; /* Add transition for opacity */
+}
+
+.page.active {
+    display: block;
+    opacity: 1; /* Show the active page with full opacity */
+}
+
+
+/* Common styles for containers */
+#container {
+    text-align: center;
+    border: 2px solid #ccc;
+    padding: 40px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+}
+
+/* Original and Enhanced Image Container */
+#imageContainer1 {
+    width: 500px;
+    height: 500px;
+    border: 3px dashed #999;
+    border-radius: 15px;
+    background-color: #ffffff;
+    margin: auto;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    pointer-events : auto;
+}
+#imageContainer2 {
+    position: relative;
+    margin: auto;
+    width: 500px;
+    height: 500px;
+    border: 3px dashed #999;
+    border-radius: 15px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+#imageContainer3 {
+    margin: auto;
+    width: 500px;
+    height: 500px;
+    border: 3px dashed #999;
+    border-radius: 15px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+#recContainer {
+    width: 300;
+    height: 77px;
+    border: 3px dashed #999;
+    border-radius: 15px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Buttons */
+#uploadButton, #processButton {
+    padding: 20px 40px;
+    font-size: 32px;
+    cursor: pointer;
+    background-color: #e7e7eb;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+#uploadedImage {
+    max-width: 100%;
+    max-height: 100%;
+    display: none;
+}
+
+#enhancedImage {
+    max-width: 100%;
+    max-height: 100%;
+    display: none;
+}
+#recImage {
+    max-width: 100%;
+    max-height: 100%;
+    display: none;
+}
+
+/* Detail box */
+#detailBox1 {
+    position: absolute;
+    display: none;
+    width: 100px;
+    height: 100px;
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#detailBox2 {
+    position: absolute;
+    display: none;
+    width: 100px;
+    height: 100px;
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+#detailBox3 {
+    position: absolute;
+    display: none;
+    width: 100px;
+    height: 100px;
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#recognizedText{
+    font-family: "微软雅黑";
+    font-size: 30px;
+}
+/* HTML: <div class="loader"></div> */
+.loader {
+    transform: scale(1.3);
+    display:none;
+    position: absolute;
+    width: 15px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    animation: l5 1s infinite linear alternate;
+    z-index: 1;
+  }
+
+  @keyframes l5 {
+      0%  {box-shadow: 20px 0 #000, -20px 0 #0002;background: #000 }
+      33% {box-shadow: 20px 0 #000, -20px 0 #0002;background: #0002}
+      66% {box-shadow: 20px 0 #0002,-20px 0 #000; background: #0002}
+      100%{box-shadow: 20px 0 #0002,-20px 0 #000; background: #000 }
+  }
+
+/* CSS for the header */
+
+.header_tab {
+    height: 10vh;
+    width: 100vw;
+    background: linear-gradient(0deg, transparent 0%, #001c63 100%);
+    top: 0%;
+    margin: 0 auto;
+}
+
+#link_0 {
+    font-size: 30px;
+}
+
+#link_0::after {
+    content: "COBE";
+    position: absolute;
+    top: 100%;
+    left: 40%;
+    width: 100%;
+    height: 2px;
+    font-size: 15px;
+}
+
+.header_nav {
+    margin: 10px 10px;
+}
+
+.header_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    height: 80%;
+    margin: auto;
+}
+
+.header_link {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 0 50px;
+    position: relative;
+}
+
+.header_link:hover {
+    opacity: 0.7;
+    transition: opacity 0.5s ease;
+}
+
+#link_1::after {
+    content: "Home";
+    position: absolute;
+    top: 100%;
+    left: -3%;
+    width: 100%;
+    height: 2px;
+    font-size: 15px;
+}
+
+#link_2::after {
+    content: "About";
+    position: absolute;
+    top: 100%;
+    left: -3%;
+    width: 100%;
+    height: 2px;
+    font-size: 15px;
+}
+
+#link_3::after {
+    content: "Contact";
+    position: absolute;
+    top: 100%;
+    left: -20%;
+    width: 100%;
+    height: 2px;
+    font-size: 15px;
+}
+
+body {
+    background-image: url("resources/1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}

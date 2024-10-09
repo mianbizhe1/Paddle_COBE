@@ -1,27 +1,34 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import subprocess
 from flask_cors import CORS
 from PIL import Image
-from functions import image_save, test
+from functions import image_save, console
 
 app = Flask(__name__)
 CORS(app)  # 在 Flask 应用中启用 CORS
+
+
+@app.route('/')
+def index():
+    return render_template('cobe.html')
+
+
 @app.route('/run-python-script', methods=['GET', 'POST'])
 def run_python_script():
     if request.method == 'POST':
         try:
-            enhanced_img = test()
-            return jsonify({'image': enhanced_img}), 200
-        
+            enhanced_img, rec_img, rec_rlt = console()
+            return jsonify({'enhanced_img': enhanced_img, 'rec_img': rec_img, 'rec_rlt': rec_rlt}), 200
+
         except Exception as e:
             print("Exception")
             return str(e), 500
     elif request.method == 'GET':
 
-
         # 处理GET请求的逻辑
         return "GET request received", 200
-    
+
+
 @app.route('/send_data', methods=['GET', 'POST'])
 def send_data():
     if request.method == 'POST':
@@ -39,5 +46,6 @@ def send_data():
         # 处理GET请求的逻辑
         return "GET request received", 200
 
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug='on', port=8000)

@@ -3,3 +3,5 @@ flask_cors
 opencv-python
 pillow
 scikit-learn
+opencv-python-rolling
+opencv-contrib-python-rolling

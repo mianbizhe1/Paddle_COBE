@@ -3,12 +3,12 @@ import paddle
 import paddle.nn as nn
 import paddle.nn.functional as F
 # import kornia  # Kornia 在Paddle中没有直接的等价物，可以考虑自定义实现或找等价操作
-import COBE.LLIE.models.archs.arch_util as arch_util
-from COBE.LLIE.models.archs.SFBlock import *
-from COBE.LLIE.models.archs.FSIB import FuseBlock
-from COBE.LLIE.models.archs.myblock import FSAIO
+import LLIE.models.archs.arch_util as arch_util
+from LLIE.models.archs.SFBlock import *
+from LLIE.models.archs.FSIB import FuseBlock
+from LLIE.models.archs.myblock import FSAIO
 
-from COBE.LLIE.models.archs.SFBlock import AmplitudeNet_skip, SFNet
+from LLIE.models.archs.SFBlock import AmplitudeNet_skip, SFNet
 
 
 ###############################

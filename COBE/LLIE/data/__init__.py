@@ -26,7 +26,7 @@ def create_dataloader(dataset, dataset_opt, opt=None, sampler=None):
 
 def create_dataset(dataset_opt):
 
-    from COBE.LLIE.data.LL_dataset import ll_dataset as D
+    from LLIE.data.LL_dataset import ll_dataset as D
     dataset = D(dataset_opt)
 
     logger = logging.getLogger('base')

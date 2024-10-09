@@ -1,7 +1,7 @@
 import os.path as osp
 import paddle
 import paddle.io as data
-import COBE.LLIE.data.util as util
+import LLIE.data.util as util
 import paddle.nn.functional as F
 import random
 import cv2

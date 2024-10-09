@@ -3,10 +3,10 @@ import os.path as osp
 import logging
 import argparse
 import paddle
-import COBE.LLIE.options.options as option
-import COBE.LLIE.utils.util as util
-from COBE.LLIE.data import create_dataset, create_dataloader
-from COBE.LLIE.models import create_model
+import LLIE.options.options as option
+import LLIE.utils.util as util
+from LLIE.data import create_dataset, create_dataloader
+from LLIE.models import create_model
 import numpy as np
 
 # 解析命令行参数

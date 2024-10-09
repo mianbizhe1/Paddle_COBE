@@ -3,11 +3,11 @@ import paddle
 import paddle.nn as nn
 import paddle.nn.functional as F
 from paddle.vision.transforms import functional as Fv
-from COBE.LLIE.models.archs.arch_util import ResidualBlock_noBN, make_layer
-from COBE.LLIE.models.archs.SFBlock import AmplitudeNet_skip, SFNet
-from COBE.LLIE.models.archs.FSIB import FuseBlock
-from COBE.LLIE.models.archs.myblock import FSAIO
-from COBE.LLIE.models.archs.torch_rgbto import rgb_to_ycbcr, ycbcr_to_rgb
+from LLIE.models.archs.arch_util import ResidualBlock_noBN, make_layer
+from LLIE.models.archs.SFBlock import AmplitudeNet_skip, SFNet
+from LLIE.models.archs.FSIB import FuseBlock
+from LLIE.models.archs.myblock import FSAIO
+from LLIE.models.archs.torch_rgbto import rgb_to_ycbcr, ycbcr_to_rgb
 
 class FourLLIE_my(nn.Layer):
     def __init__(self, nf=64):

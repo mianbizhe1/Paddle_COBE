@@ -1,13 +1,13 @@
 # import torch
 # import LLIE.models.archs.FourLLIE as FourLLIE
 # import LLIE.models.archs.FourLLIE_orj as FourLLIE_orj
-import COBE.LLIE.models.archs.FourLLIE_my as FourLLIE_my
+import LLIE.models.archs.FourLLIE_my as FourLLIE_my
 
 # import LLIE.models.archs.FourLLIE_my_withycbcr as FourLLIE_Ycbcr
-import COBE.LLIE.models.archs.FourLLIE_my_withycbcr_change as FourLLIE_change
+import LLIE.models.archs.FourLLIE_my_withycbcr_change as FourLLIE_change
 # import LLIE.models.archs.FourLLIE_my_withycbcr_changessh as FourLLIE_changessh
 # import LLIE.models.archs.FourLLIE_fno_2 as FourLLIE_fno
-from COBE.LLIE.models.archs.EnhanceN_arch_LOL import InteractNet as UHD_Net
+from LLIE.models.archs.EnhanceN_arch_LOL import InteractNet as UHD_Net
 
 
 # Generator

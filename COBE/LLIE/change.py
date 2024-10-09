@@ -4,6 +4,7 @@ import paddle
 # Step 1: Load the PyTorch model
 torch_model_path = '83000_G.pth'
 torch_model = torch.load(torch_model_path)
+print(type(torch_model))
 
 # Step 2: Create a dictionary to hold Paddle parameters
 paddle_model = {}

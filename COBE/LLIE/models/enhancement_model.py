@@ -5,19 +5,14 @@ import paddle
 import paddle.nn as nn
 from paddle import DataParallel
 print("paddle 部分完成")
-import COBE.LLIE.models.networks as networks
-print("1")
-import COBE.LLIE.models.lr_scheduler as lr_scheduler
-print("2")
-from COBE.LLIE.models.base_model import BaseModel
-print("3")
-from COBE.LLIE.models.loss import CharbonnierLoss, VGGLoss
-print("4")
-from COBE.LLIE.models.archs.torch_rgbto import rgb_to_ycbcr, ycbcr_to_rgb
+import LLIE.models.networks as networks
+import LLIE.models.lr_scheduler as lr_scheduler
+from LLIE.models.base_model import BaseModel
+from LLIE.models.loss import CharbonnierLoss, VGGLoss
+from LLIE.models.archs.torch_rgbto import rgb_to_ycbcr, ycbcr_to_rgb
 
 logger = logging.getLogger('base')
 
-print("s1")
 class enhancement_model(BaseModel):
     def __init__(self, opt):
         super(enhancement_model, self).__init__(opt)
@@ -31,10 +26,8 @@ class enhancement_model(BaseModel):
         # Define network and load pretrained models
         print("start load")
         self.netG = networks.define_G(opt)
-        print("m2")
         if opt['dist']:
             self.netG = paddle.DataParallel(self.netG)
-            print("m1")
 
         # Print network
         self.print_network()

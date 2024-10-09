@@ -2,7 +2,7 @@ import os
 import os.path as osp
 import logging
 import yaml
-from COBE.LLIE.utils.util import OrderedYaml
+from LLIE.utils.util import OrderedYaml
 Loader, Dumper = OrderedYaml()
 
 
