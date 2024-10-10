@@ -8,10 +8,6 @@ app = Flask(__name__)
 CORS(app)  # 在 Flask 应用中启用 CORS
 
 
-@app.route('/')
-def index():
-    return render_template('cobe.html')
-
 
 @app.route('/run-python-script', methods=['GET', 'POST'])
 def run_python_script():
@@ -48,4 +44,4 @@ def send_data():
 
 
 if __name__ == '__main__':
-    app.run(debug='on', port=8000)
+    app.run(debug='on', host='0.0.0.0', port=8000)

@@ -61,7 +61,7 @@ var showdb = false;
     formData.append('image', file);
 
     // 发送图片数据到 Flask 后端
-    axios.post('http://127.0.0.1:8000/send_data', formData, {
+    axios.post('http://127.0.0.1:8080/send_data', formData, {
         headers: {
             'Content-Type': 'multipart/form-data' // 使用 multipart/form-data 格式发送数据
         }
@@ -70,7 +70,7 @@ var showdb = false;
     }).catch(error => {
         console.error(error);
     });
-    axios.post('http://127.0.0.1:8000/run-python-script', {}, {
+    axios.post('http://127.0.0.1:8080/run-python-script', {}, {
         headers: {
             'Content-Type': 'application/json' // 更改 Content-Type 为 application/json
         }

@@ -5,3 +5,5 @@ pillow
 scikit-learn
 opencv-python-rolling
 opencv-contrib-python-rolling
+paddleocr
+onnx
