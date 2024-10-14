@@ -7,8 +7,6 @@ from functions import image_save, console
 app = Flask(__name__)
 CORS(app)  # 在 Flask 应用中启用 CORS
 
-
-
 @app.route('/run-python-script', methods=['GET', 'POST'])
 def run_python_script():
     if request.method == 'POST':

@@ -1,17 +1,31 @@
 import argparse
+import os
 
 import numpy as np
 import onnxruntime
 import paddle
+import requests
 
 upscale = 4
 window_size = 8
-height = 8
-width = 8
+height = 560
+width = 560
+
 
 # 加载 ONNX 模型
 model_path = "nasnet.onnx"
+if os.path.exists(model_path):
+    print(f'loading model from {model_path}')
+else:
+    os.makedirs(os.path.dirname("./" + model_path), exist_ok=True)
+    url = 'https://github.com/mianbizhe1/Paddle_COBE/blob/master/COBE/{}'.format(
+        os.path.basename(model_path))
+    r = requests.get(url, allow_redirects=True)
+    print(f'downloading model {model_path}')
+    open(model_path, 'wb').write(r.content)
+
 session = onnxruntime.InferenceSession(model_path)
+
 
 # 准备输入数据（NumPy 数组）
 input_data = np.random.rand(1, 3, height, width).astype(np.float32)  # 示例输入
@@ -20,6 +34,7 @@ input_data = np.random.rand(1, 3, height, width).astype(np.float32)  # 示例输
 
 def div(img_lq, args, window_size):
     model_path = "nasnet.onnx"
+
     ort_session = onnxruntime.InferenceSession(model_path)
     if isinstance(img_lq, paddle.Tensor):  # 如果是 Paddle Tensor
         img_lq = img_lq.numpy()  # 转换为 NumPy 数组
@@ -83,7 +98,7 @@ def main():
     parser.add_argument('--model_path', type=str, default='nasnet.onnx')
     parser.add_argument('--folder_lq', type=str, default='../temp/enhanced', help='input low-quality test image folder')
     parser.add_argument('--folder_gt', type=str, default=None, help='input ground-truth test image folder')
-    parser.add_argument('--tile', type=int, default=16,
+    parser.add_argument('--tile', type=int, default=560,
                         help='Tile size, None for no tile during testing (testing as a whole)')
     parser.add_argument('--tile_overlap', type=int, default=32, help='Overlapping of different tiles')
 

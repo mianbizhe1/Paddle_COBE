@@ -83,6 +83,7 @@ def main():
             output = div(img_lq, args, window_size)
             print("div done")
             # output = output.run(None, {input_name: img_lq})
+
             print(output[0].shape)
             print(output)
 
